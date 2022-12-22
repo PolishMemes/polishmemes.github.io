@@ -4,7 +4,7 @@
 }
 a {
     text-decoration: none;
-    color: #5865F2;
+    color: #ee7b5a;
 }
 
 .About-us p {
@@ -43,14 +43,14 @@ a {
 
 .devs-images img{
     border-radius: 50%;
-    border: 2px solid #5865F2;
+    border: 2px solid #ee7b5a;
     height: 200px;
     width: 200px;
 }
 
 
 .name a{
-color: #5865F2;
+color: #ee7b5a;
 font-weight: bolder;
 font-size: 20px;
 }
