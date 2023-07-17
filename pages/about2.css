@@ -477,8 +477,14 @@ ul {
   .avatar {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+    border-radius: 20%;
     margin-right: 10px;
+
+    background-color: #ee7b5a;
+    box-shadow: 0px 0px 8px 2px rgba(238, 123, 90, .5);
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(238, 123, 90, .5);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(238, 123, 90, .5);
+    
   }
   
   .member-name {

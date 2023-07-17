@@ -27,6 +27,7 @@
                   <img class="noselect" src="/images/plflag.png"> Polish Memes
                </div>
                <ul class="mainMenu noselect">
+                <li><a class="active">Role: <span id="userRole"></span>
                 <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
                </ul>
          </nav>     
@@ -36,21 +37,18 @@
             <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
             <br>
             <br>
-            <a href="#" class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Zaloguj się za pomocą Discorda </a>
+            <a class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Log in with Discord</a>
                </div> 
       <div id="dashboard" style="display: none;">
          <img id="userAvatar" class="noselect" src="" alt="userAvatar">
-            <p class="title">Witaj <span id="username"></span>!</p>
-            <p class="subtitle">Tutaj jest zawartość Twojego panelu bota.</p>
+            <p class="title">Welcome <span id="username"></span>!</p>
+            <p class="subtitle">This is the content of your bot panel.</p>
       </div>
          
          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-         <script src="/dashboard/index.js"></script>
          <script src="/dashboard/loginbutton.js"></script>
+         <script src="/dashboard/index.js"></script>
+         <script src="/dashboard/login.js"></script>
       </div>
    </body>
 </html>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="/dashboard/login.js"></script>
-  <script src="/dashboard/index.js"></script>
-</body>

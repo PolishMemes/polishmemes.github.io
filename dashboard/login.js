@@ -1,5 +1,3 @@
-// Dodaj poniższy kod do obszaru <script> w pliku login.js lub pomiń istniejący kod.
-
 // Konfiguracja
 const clientID = '848629390577500211';
 const redirectURI = 'http://127.0.0.1:5500/dashboard/callback.html';
@@ -24,7 +22,25 @@ function checkLoginStatus() {
       const username = response.data.username;
       const discriminator = response.data.discriminator;
       const avatarUrl = `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`;
-      showDashboard(`${username}#${discriminator}`, avatarUrl);
+
+      // Odczytaj rolę użytkownika z pliku user_data.json
+      axios.get('/dashboard/user_data.json')
+        .then(userResponse => {
+          const userData = userResponse.data;
+          const userId = response.data.id;
+
+          if (userData[userId]) {
+            const userRole = userData[userId];
+
+            showDashboard(`${username}#${discriminator}`, avatarUrl, userRole);
+          } else {
+            showDashboard(`${username}#${discriminator}`, avatarUrl, 'User');
+          }
+        })
+        .catch(error => {
+          console.error('Błąd podczas odczytu pliku user_data.json:', error);
+          showDashboard(`${username}#${discriminator}`, avatarUrl, 'User');
+        });
     })
     .catch(error => {
       // Wystąpił błąd lub token jest nieważny
@@ -38,16 +54,18 @@ function checkLoginStatus() {
 }
 
 // Funkcja wyświetlająca panel bota po zalogowaniu
-function showDashboard(username, avatarUrl) {
+function showDashboard(username, avatarUrl, userRole) {
   const loginElement = document.getElementById('login');
   const dashboardElement = document.getElementById('dashboard');
   const userAvatarElement = document.getElementById('userAvatar');
+  const userRoleElement = document.getElementById('userRole');
 
-  if (loginElement && dashboardElement && userAvatarElement) {
+  if (loginElement && dashboardElement && userAvatarElement && userRoleElement) {
     loginElement.style.display = 'none';
     dashboardElement.style.display = 'block';
     userAvatarElement.src = avatarUrl;
     document.getElementById('username').textContent = username;
+    userRoleElement.textContent = userRole;
   }
 }
 
