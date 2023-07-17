@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Polish Memes - Dashboard</title>
+      <link rel="stylesheet" href="/dashboard/index.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+      <link rel="icon" href="/images/plflag.png">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+    
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+      
+      <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+   </head>
+   <body onload="loaderFunction()">
+
+      <div id="loader">
+          <div class="loading">
+          <span></span>
+          </div>
+      </div>
+      <div id="page">
+            <nav>
+               <div class="logo noselect">
+                  <img class="noselect" src="/images/plflag.png"> Polish Memes
+               </div>
+               <ul class="mainMenu noselect">
+                <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
+               </ul>
+         </nav>     
+         <div class="content noselect">
+            <div class="heading text-center">
+               <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
+            </div>
+         </div>
+         
+         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+         <script src="/dashboard/index.js"></script>
+         <script src="/dashboard/loginbutton.js"></script>
+      </div>
+   </body>
+</html>
+
+<head>
+  <title>Panel bota</title>
+  <link rel="stylesheet" type="text/css" href="/dashboard/styles.css">
+  <link rel="stylesheet" type="text/css" href="/dashboard/index.css">
+</head>
+<body>
+  <h1>Panel bota</h1>
+  <div id="login">
+    <a href="#" onclick="loginWithDiscord()">Zaloguj się przez Discorda</a>
+  </div>
+
+  <div id="dashboard" style="display: none;">
+    <h2>Witaj, <span id="username"></span>!</h2>
+    <p>Tutaj jest zawartość Twojego panelu bota.</p>
+    <a href="#" onclick="logout()">Wyloguj</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/dashboard/login.js"></script>
+  <script src="/dashboard/index.js"></script>
+</body>
