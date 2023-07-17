@@ -23,7 +23,8 @@ function checkLoginStatus() {
       // Użytkownik jest zalogowany
       const username = response.data.username;
       const discriminator = response.data.discriminator;
-      showDashboard(`${username}#${discriminator}`);
+      const avatarUrl = `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`;
+      showDashboard(`${username}#${discriminator}`, avatarUrl);
     })
     .catch(error => {
       // Wystąpił błąd lub token jest nieważny
@@ -37,13 +38,15 @@ function checkLoginStatus() {
 }
 
 // Funkcja wyświetlająca panel bota po zalogowaniu
-function showDashboard(username) {
+function showDashboard(username, avatarUrl) {
   const loginElement = document.getElementById('login');
   const dashboardElement = document.getElementById('dashboard');
+  const userAvatarElement = document.getElementById('userAvatar');
 
-  if (loginElement && dashboardElement) {
+  if (loginElement && dashboardElement && userAvatarElement) {
     loginElement.style.display = 'none';
     dashboardElement.style.display = 'block';
+    userAvatarElement.src = avatarUrl;
     document.getElementById('username').textContent = username;
   }
 }

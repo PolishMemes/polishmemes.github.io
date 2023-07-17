@@ -31,10 +31,18 @@
                </ul>
          </nav>     
          <div class="content noselect">
-            <div class="heading text-center">
-               <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
-            </div>
-         </div>
+      <div class="heading text-center">
+      <div id="login">
+            <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
+            <br>
+            <br>
+            <a href="#" class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Zaloguj się za pomocą Discorda </a>
+               </div> 
+      <div id="dashboard" style="display: none;">
+         <img id="userAvatar" class="noselect" src="" alt="userAvatar">
+            <p class="title">Witaj <span id="username"></span>!</p>
+            <p class="subtitle">Tutaj jest zawartość Twojego panelu bota.</p>
+      </div>
          
          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
          <script src="/dashboard/index.js"></script>
@@ -42,24 +50,6 @@
       </div>
    </body>
 </html>
-
-<head>
-  <title>Panel bota</title>
-  <link rel="stylesheet" type="text/css" href="/dashboard/styles.css">
-  <link rel="stylesheet" type="text/css" href="/dashboard/index.css">
-</head>
-<body>
-  <h1>Panel bota</h1>
-  <div id="login">
-    <a href="#" onclick="loginWithDiscord()">Zaloguj się przez Discorda</a>
-  </div>
-
-  <div id="dashboard" style="display: none;">
-    <h2>Witaj, <span id="username"></span>!</h2>
-    <p>Tutaj jest zawartość Twojego panelu bota.</p>
-    <a href="#" onclick="logout()">Wyloguj</a>
-  </div>
-
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="/dashboard/login.js"></script>
   <script src="/dashboard/index.js"></script>
