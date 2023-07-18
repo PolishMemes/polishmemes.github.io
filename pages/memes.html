@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
    <head>
       <meta charset="utf-8">
-      <title>Polish Memes - Login</title>
+      <title>Polish Memes - Memes</title>
       <link rel="stylesheet" href="/dashboard/index.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,22 +27,28 @@
                   <img class="noselect" src="/images/plflag.png"> Polish Memes
                </div>
                <ul class="mainMenu noselect">
-                  <li><a class="active" onclick="loginWithDiscordDev()" role="button"><i class="fas fa-cogs"></i> Developer's Dashboard</a></li>
-                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a class="btn btn-secondary">Role: <span id="userRole"></span>
+                <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
                </ul>
          </nav>     
          <div class="content noselect">
-            <div class="heading text-center">
-               <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
-               <p class="title2">To log in to the bot dashboard, click the button below.</p>
-               <br>
-               <a class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Log in with Discord</a>
-            </div>
-         </div>
+      <div class="heading text-center">
+      <div id="login">
+            <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
+            <br>
+            <br>
+            <a class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Log in with Discord</a>
+               </div> 
+      <div id="dashboard" style="display: none;">
+         <img id="userAvatar" class="noselect" src="" alt="userAvatar">
+            <p class="title">Welcome <span id="username"></span>!</p>
+            <p class="subtitle">This is the content of your bot panel.</p>
+      </div>
          
          <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-         <script src="/dashboard/index.js"></script>
          <script src="/dashboard/loginbutton.js"></script>
+         <script src="/dashboard/index.js"></script>
+         <script src="/dashboard/login.js"></script>
       </div>
    </body>
 </html>

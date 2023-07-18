@@ -3,6 +3,7 @@
    <head>
       <meta charset="utf-8">
       <title>Polish Memes - Dashboard</title>
+      <link rel="stylesheet" href="/pages/home.css">
       <link rel="stylesheet" href="/dashboard/index.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
       
       <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+
    </head>
    <body onload="loaderFunction()">
 
@@ -27,28 +29,76 @@
                   <img class="noselect" src="/images/plflag.png"> Polish Memes
                </div>
                <ul class="mainMenu noselect">
-                <li><a class="active">Role: <span id="userRole"></span>
-                <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
+                  <li><a class="btn btn-primary">Role: <span id="userRole"></span></a></li>
+                  <li class="notifications-dropdown">
+                     <a class="active dropdown-toggle" onclick="toggleNotifications()">Notifications</a>
+                     <div class="notifications-menu" id="notificationsMenu">
+                        <ul class="notifications-list">
+                           <li>None</li>
+                        </ul>
+                     </div>
+                  </li>
+                  <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
                </ul>
          </nav>     
          <div class="content noselect">
-      <div class="heading text-center">
-      <div id="login">
-            <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
-            <br>
-            <br>
-            <a class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Log in with Discord</a>
-               </div> 
-      <div id="dashboard" style="display: none;">
-         <img id="userAvatar" class="noselect" src="" alt="userAvatar">
-            <p class="title">Welcome <span id="username"></span>!</p>
-            <p class="subtitle">This is the content of your bot panel.</p>
-      </div>
-         
-         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-         <script src="/dashboard/loginbutton.js"></script>
-         <script src="/dashboard/index.js"></script>
-         <script src="/dashboard/login.js"></script>
-      </div>
+            <div class="heading text-center">
+               <div id="login">
+                  <img id="botLogo" class="noselect" src="/images/plflag2.png" alt="botLogo">
+                  <br>
+                  <br>
+                  <a class="btn btn-secondary" onclick="loginWithDiscord()" role="button"><i class="fab fa-discord"></i> Log in with Discord</a>
+               </div>
+               <div id="dashboard" style="display: none;">
+                  <img id="userAvatar" class="noselect" src="" alt="userAvatar">
+                  <p class="title3">Welcome <span id="username"></span>!</p>
+
+                  <!-- Dodane modalne okno -->
+                  <div id="uploadModal" class="modal-overlay">
+                     <div class="modal">
+                        <br>
+                        <h2>Upload Meme</h2>
+                        <form id="uploadForm" enctype="multipart/form-data" onsubmit="uploadMeme(event)">
+                           <label for="title">Title:</label>
+                           <input type="text" id="title" name="title" maxlength="50" required>
+                           <br>
+                           <label for="image">Select Image:</label>
+                           <input type="file" id="image" name="image" accept="image/png, image/jpeg, image/jpg, image/gif, video/*" required>
+                           <br>
+                           <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                     </div>
+                  </div>
+                  <br>
+                  <div id="dashboard">
+                     <h3 class="rule-list">Before you send a meme, familiarize yourself with a few rules:</h3>
+                     <ul class="subtitle">
+                        <p> - When you submit a meme, it will go through a review process to ensure that it does not contain "NSFW" and similar content.</p>
+                        <p> - Waiting times vary, so don't expect your meme to be verified within 5 minutes. Just be patient. :)</p>
+                        <p> - You know that a meme can be rejected if it is not suitable or if it contains inappropriate content.</p>
+                        <p> - The meme doesn't have to be your own, but before you submit it, see if it already exists on the site: <a href="http://127.0.0.1:5500/pages/memes.html" target="_none">Memes</a>. We do not want duplicates.</p>
+                        <p> - When a meme is approved/rejected, you will receive a notification on this page.</p>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+      <!-- Poniżej pozostała część kodu -->
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="/dashboard/loginbutton.js"></script>
+      <script src="/dashboard/index.js"></script>
+      <script src="/dashboard/login.js"></script>
+      <script src="/dashboard/upload_modal.js"></script> <!-- Nowy skrypt dla obsługi modalnego okna -->
+      <script>
+         function toggleNotifications() {
+            const notificationsMenu = document.getElementById('notificationsMenu');
+            if (notificationsMenu.style.display === 'block') {
+               notificationsMenu.style.display = 'none';
+            } else {
+               notificationsMenu.style.display = 'block';
+            }
+         }
+      </script>
    </body>
 </html>

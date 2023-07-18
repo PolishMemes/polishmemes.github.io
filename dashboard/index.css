@@ -383,6 +383,13 @@ nav .mainMenu .closeMenu,
     animation: pageShow .3s ease-in-out;
 }
 
+.title3 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: 25px;
+    animation: pageShow .3s ease-in-out;
+}
+
 .subtitle {
     color: rgba(255, 255, 255, 0.75);
     font-size: 15px;
@@ -481,3 +488,29 @@ a {
     text-align: right;
   }
   
+  .notifications-dropdown {
+    position: relative;
+ }
+
+ .notifications-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 999;
+    background-color: #222222;
+    border: 1px solid #ee7b5a;
+    -webkit-text-fill-color: #ee7b5a;
+    min-width: 200px;
+    padding: 10px;
+ }
+
+ .notifications-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+ }
+
+ .notifications-list li {
+    padding: 5px 0;
+ }
