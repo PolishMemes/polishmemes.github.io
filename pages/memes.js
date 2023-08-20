@@ -12,7 +12,6 @@ window.addEventListener("load", async () => {
    memeContainer.addEventListener("click", (event) => {
       const memeTitle = event.target.closest(".meme-title");
       if (memeTitle) {
-         const originalTitle = memeTitle.textContent;
          const fullTitle = memeTitle.dataset.fullTitle;
 
          const overlay = document.createElement("div");
@@ -29,63 +28,37 @@ window.addEventListener("load", async () => {
          `;
          body.appendChild(memeModal);
 
-         overlay.addEventListener("click", closeMemeModal);
-         const modalCloseBtn = memeModal.querySelector(".meme-modal-close");
-         modalCloseBtn.addEventListener("click", closeMemeModal);
+         memeModal.addEventListener("click", (e) => {
+            if (e.target.classList.contains("meme-modal") || e.target.classList.contains("meme-modal-close")) {
+               body.removeChild(memeModal);
 
-         function closeMemeModal() {
-            body.removeChild(overlay);
-            body.removeChild(memeModal);
-            memeTitle.textContent = originalTitle;
-         }
+            }
+         });
       }
 
-      const memeImage = event.target.closest(".meme-image");
+      const memeImage = event.target.closest(".meme-thumbnail");
       if (memeImage) {
-         const mediaType = memeImage.dataset.mediaType;
-         if (mediaType === "video") {
-            const originalVideoSrc = memeImage.dataset.mediaUrl;
+         const originalImageSrc = memeImage.src;
 
-            const memeModal = document.createElement("div");
-            memeModal.classList.add("meme-modal");
-            memeModal.innerHTML = `
-               <div class="meme-modal-content">
-                  <span class="meme-modal-close">&times;</span>
-                  <video controls class="full-video">
-                     <source src="${originalVideoSrc}" type="video/mp4">
-                     Your browser does not support the video tag.
-                  </video>
-               </div>
-            `;
-            body.appendChild(memeModal);
+         const memeModal = document.createElement("div");
+         memeModal.classList.add("meme-modal");
+         memeModal.innerHTML = `
+            <div class="meme-modal-content">
+               <span class="meme-modal-close">&times;</span>
+               <img class="full-image" src="${originalImageSrc}" alt="Full Meme Image">
+            </div>
+         `;
+         body.appendChild(memeModal);
 
-            memeModal.addEventListener("click", (e) => {
-               if (e.target.classList.contains("meme-modal") || e.target.classList.contains("meme-modal-close")) {
-                  body.removeChild(memeModal);
-               }
-            });
-         } else {
-            const originalImageSrc = memeImage.src;
-
-            const memeModal = document.createElement("div");
-            memeModal.classList.add("meme-modal");
-            memeModal.innerHTML = `
-               <div class="meme-modal-content">
-                  <span class="meme-modal-close">&times;</span>
-                  <img class="full-image" src="${originalImageSrc}" alt="Full Meme Image">
-               </div>
-            `;
-            body.appendChild(memeModal);
-
-            memeModal.addEventListener("click", (e) => {
-               if (e.target.classList.contains("meme-modal") || e.target.classList.contains("meme-modal-close")) {
-                  body.removeChild(memeModal);
-               }
-            });
-         }
+         memeModal.addEventListener("click", (e) => {
+            if (e.target.classList.contains("meme-modal") || e.target.classList.contains("meme-modal-close")) {
+               body.removeChild(memeModal);
+            }
+         });
       }
    });
 });
+
 
 async function fetchMemes() {
    const response = await fetch("/pages/memes.json");
