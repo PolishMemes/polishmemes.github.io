@@ -1,0 +1,29 @@
+[
+    {
+       "title": "Loona Meme",
+       "mediaUrl": "/memes/loona.png",
+       "date": "2023-08-17",
+       "author": "John Doe"
+    },
+    {
+       "title": "Cat Meme",
+       "mediaType": "video",
+       "mediaUrl": "/memes/fnaf.mp4",
+       "date": "2023-08-16",
+       "author": "Jane Smith"
+    },
+    {
+       "title": "Funny Meme",
+       "mediaType": "video",
+       "mediaUrl": "/memes/mlp.webm",
+       "date": "2023-08-15",
+       "author": "Alex Johnson"
+    },
+    {
+        "title": "Loona 2.022222222222222222",
+        "mediaUrl": "/memes/loon2.png",
+        "date": "2023-08-15",
+        "author": "Hiverro"
+     }
+ ]
+ 

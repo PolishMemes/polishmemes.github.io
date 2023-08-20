@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Polish Memes - Discord Bot</title>
-      <link rel="stylesheet" href="/pages/home.css">
-      <link rel="stylesheet" href="/dashboard/index.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+   <meta charset="utf-8">
+   <title>Polish Memes - Discord Bot</title>
+   <link rel="stylesheet" href="/pages/home.css">
+   <link rel="stylesheet" href="/pages/memes.css">
+   <link rel="stylesheet" href="/dashboard/index.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-      <link rel="icon" href="/images/plflag.png">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+   <link rel="icon" href="/images/plflag.png">
+   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
     
-      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
       
-      <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
-   </head>
-   <body onload="loaderFunction()">
+   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+</head>
+<body onload="loaderFunction()">
 
-      <div id="loader">
-          <div class="loading">
-          <span></span>
-          </div>
+   <div id="loader">
+      <div class="loading">
+         <span></span>
       </div>
-      <div id="page">
-            <nav>
-               <div class="logo noselect">
-                  <img class="noselect" src="/images/plflag.png"> Polish Memes
-               </div>
+   </div>
+   <div id="page">
+      <nav>
+         <div class="logo noselect">
+            <img class="noselect" src="/images/plflag.png"> Polish Memes
+         </div>
 
-               <div class="openMenu noselect"><i class="fa fa-bars"></i></div>
-               <ul class="mainMenu noselect">
-                  <li><a class="btn btn-secondary" href="/dashboard/login.html"><i class="fas fa-cogs"></i> Dashboard</a></li>
-                  <li><a class="btn btn-primary" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
-                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
-                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
-                  <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
-               </ul>
-            </nav>
+         <div class="openMenu noselect"><i class="fa fa-bars"></i></div>
+         <ul class="mainMenu noselect">
+            <li><a class="btn btn-secondary" href="/dashboard/login.html"><i class="fas fa-cogs"></i> Dashboard</a></li>
+            <li><a class="btn btn-primary" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
+            <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
+         </ul>
+      </nav>
 
-            <div class="content noselect">
-               <div class="heading text-center">
-                  <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
-                  <h1 class="title" id="title">Polish Memes</h1>
-                  <p class="subtitle" id="subtitle">Browse the best Polish memes!</p>
-                  <div>
-            </div>   
-            <script src="/pages/home.js"></script>
+      <div class="content noselect">
+         <div class="heading text-center">
+            <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
+            <h1 class="title" id="title">Polish Memes</h1>
+            <p class="subtitle" id="subtitle">Browse the best Polish memes!</p>
+         </div>
+
+         <div class="meme-container" id="memeContainer">
+            <!-- Meme cards will be dynamically added here -->
+         </div>
+         <!-- End of content -->
       </div>
-   </body>
+   <!-- End of page -->
+   <script src="/pages/home.js"></script>
+   <script src="/pages/memes.js"></script>
+</body>
 </html>
