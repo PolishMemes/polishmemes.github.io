@@ -121,7 +121,7 @@ function createImageElement(src) {
 }
 
 function truncateTitle(title) {
-   const maxLength = 12;
+   const maxLength = 15;
    if (title.length > maxLength) {
       return title.substring(0, maxLength) + "...";
    }
