@@ -3,7 +3,7 @@ const clientID = '848629390577500211';
 const redirectURI = 'http://127.0.0.1:5500/dashboard/callbackdev.html';
 const discordAPI = 'https://discord.com/api/v10';
 
-const developerDataUrl = "/dashboard/dev_access.json";
+const developerDataUrl = "/data/dev_access.json";
 
 // Sprawdź, czy użytkownik jest już zalogowany
 checkLoginStatus();
@@ -27,7 +27,7 @@ function checkLoginStatus() {
       const avatarUrl = `https://cdn.discordapp.com/avatars/${userId}/${response.data.avatar}.png`;
 
       // Odczytaj rolę użytkownika z pliku user_data.json
-      axios.get('/dashboard/user_data.json')
+      axios.get('/data/user_data.json')
         .then(userResponse => {
           const userData = userResponse.data;
 

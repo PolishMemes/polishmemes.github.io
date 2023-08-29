@@ -1,11 +1,12 @@
 window.addEventListener("load", async () => {
    const memesData = await fetchMemes();
+   const language = localStorage.getItem('language') || 'en'; // Pobierz aktualny język z local storage
 
    const memeContainer = document.getElementById("memeContainer");
    const body = document.body;
 
    memesData.forEach(memeData => {
-      const memeCard = createMemeCard(memeData);
+      const memeCard = createMemeCard(memeData, language); // Przekazuj język do funkcji tworzącej kartę mema
       memeContainer.appendChild(memeCard);
    });
 
@@ -31,7 +32,6 @@ window.addEventListener("load", async () => {
          memeModal.addEventListener("click", (e) => {
             if (e.target.classList.contains("meme-modal") || e.target.classList.contains("meme-modal-close")) {
                body.removeChild(memeModal);
-
             }
          });
       }
@@ -59,14 +59,13 @@ window.addEventListener("load", async () => {
    });
 });
 
-
 async function fetchMemes() {
-   const response = await fetch("/pages/memes.json");
+   const response = await fetch("/data/memes.json");
    const memesData = await response.json();
    return memesData;
 }
 
-function createMemeCard(memeData) {
+function createMemeCard(memeData, language) {
    const memeCard = document.createElement("div");
    memeCard.classList.add("meme-card");
 
@@ -89,19 +88,27 @@ function createMemeCard(memeData) {
 
    const memeDate = document.createElement("p");
    memeDate.classList.add("meme-date");
-   memeDate.textContent = `Date added: ${memeData.date}`;
+   memeDate.textContent = `${memeData.date}`;
    memeInfo.appendChild(memeDate);
-
+   
    const memeAuthor = document.createElement("p");
    memeAuthor.classList.add("meme-author");
-   memeAuthor.textContent = `Author: ${memeData.author}`;
+   memeAuthor.textContent = `${memeData.author}`;
    memeInfo.appendChild(memeAuthor);
-
+   
    memeDetails.appendChild(memeInfo);
 
    memeCard.appendChild(memeDetails);
 
    return memeCard;
+}
+
+function translate(language, key) {
+   const translations = {
+      // Wklej tutaj tłumaczenia z pliku /data/translations.json
+   };
+
+   return translations[language] && translations[language][key] ? translations[language][key] : key;
 }
 
 function createVideoElement(src) {

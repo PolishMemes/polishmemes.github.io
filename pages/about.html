@@ -28,41 +28,58 @@
 
 
 <div id="page">
-  <nav>
-    <div class="logo noselect">
-       <img class="noselect" src="/images/plflag.png"> Polish Memes
-    </div>
+      <nav>
+         <div class="logo noselect">
+            <img class="noselect" src="/images/plflag.png"> Polish Memes
+         </div>
 
          <div class="menu-container">
-            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> Dashboard</a>
+            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> <span data-translate="menu.dashboard"></span></a>
             <a class="btn btn-secondary" onclick="loginWithDiscord()"><i class="fab fa-discord"></i> Log in with Discord</a>
             <div class="main-menu-button">
                <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
                <ul class="mainMenu noselect">
-                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
-                  <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
-                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
-                  <li><a class="active2" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
+                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> <span data-translate="menu.home"></span></a></li>
+                  <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> <span data-translate="menu.memes"></span></a></li>
+                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> <span data-translate="menu.news"></span></a></li>
+                  <li><a class="active2" href="/pages/about.html"><i class="far fa-list-alt"></i> <span data-translate="menu.about"></span></a></li>
                </ul>
             </div>
             <div class="main-menu-button">
                <a class="btn btn-primary profile-button">
                   <div class="profile-container">
                      <img class="avatar-icon enlarged-avatar-icon" id="userAvatar" src="" alt="userAvatar"></img>
-                     <span class="avatar-text">Profile</span>
+                     <span class="avatar-text" data-translate="profileMenu.profile"></span>
                   </div>
                </a>
                <div id="settingsModal" class="modal">
                   <div class="modal-content">
+                     <h2 data-translate="modal.settings"></h2>
+                     <div class="settings-options">
+                        <div id="languageSettingsModal" class="option">
+                           <h3 data-translate="modal.language"></h3>
+                           <label for="languageSelect" data-translate="modal.selectLanguage"></label>
+                           <select id="languageSelect">
+                              <option value="en">English</option>
+                              <option value="pl">Polski</option>
+                           </select>
+                        </div>
+                        <div id="feedbackModal" class="option">
+                           <a href="https://forms.gle/P7CicyBnFrysmBFa7" target="_none"><h3 data-translate="modal.feedback"></h3></a>
+                        </div>
+                        <div id="contactModal" class="option">
+                           <a href="https://discord.gg/GYUtShqFtF" target="_none"><h3 data-translate="modal.contact"></h3></a>
+                        </div>
+                     </div>
                   </div>
                </div>
                <ul class="mainMenu noselect profile-menu">
-                  <li><a class="active" href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                  <li><a class="active" href="#"><i class="fas fa-cog"></i> <span data-translate="profileMenu.settings"></span></a></li>
+                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> <span data-translate="profileMenu.logout"></span></a></li>
                </ul>
-            </div>
+            </div>         
          </div>
- </nav>
+      </nav>
 
 <div class="container clear noselect">
   <div class="row wrapper">
@@ -73,25 +90,25 @@
       <div class="sidepanel">
         <div class="divider left"></div>
 
-          <a class="title" href="#introduction">Introduction</a>
+          <a class="title" href="#introduction"><span data-translate="introduction"></span></a>
           
-          <a class="section" href="#aboutthisbot">About this Bot</a>
-          <a class="section" href="#technology">Technology</a>
+          <a class="section" href="#aboutthisbot" data-translate="aboutthisbot"></a>
+          <a class="section" href="#technology"><span data-translate="technology"></span></a>
 
           <div class="divider left"></div>
 
-          <a class="title" href="#gettingstarted">Getting Started</a>
+          <a class="title" href="#gettingstarted" data-translate="gettingstarted"></a>
 
-          <a class="section" href="#inbothelp">In-Bot Help</a>
-          <a class="section" href="#addingthebot">Adding the Bot</a>
-
-          <div class="divider left"></div>
-
-          <a class="title" href="#commands">Commands</a>
+          <a class="section" href="#inbothelp"><span data-translate="in-bot help"></span></a>
+          <a class="section" href="#addingthebot" data-translate="addingthebot"></a>
 
           <div class="divider left"></div>
 
-          <a class="title" href="#team">Team</a>
+          <a class="title" href="#commands"><span data-translate="commands"></span></a>
+
+          <div class="divider left"></div>
+
+          <a class="title" href="#team" data-translate="team"></a>
 
           <div class="divider left"></div>
       
@@ -100,18 +117,17 @@
       </div>
 
       <div class="right-col">
-          <h1 id="introduction">Introduction</h1>
+          <h1 id="introduction"><span data-translate="introduction1"></span></h1>
           
           <p id="aboutthisbot">Welcome to Polish Memes, the ultimate bot that will immerse you in the world of Polish memes.</p> 
       
-          <h2>About this Bot</h2>
+          <h1 id="abouthisbot" data-translate="aboutthisbot"></h1>
           
-          <p id="technology">Polish Memes Bot guarantees 100% security. It does not store any detailed data about clients or their servers. It operates 24/7 and is fully safe for work (SFW).</p>
-
+          <p id="technology">Polish Memes Bot guarantees 100% security. It does not store any detailed data about clients or their servers. It operates 24/7 and is fully safe for work (SFW).<br><br>
           <a href="https://pastebin.com/rc014JPS" target="_none">Terms of Service</a> <span> / </span>
-          <a href="https://pastebin.com/6sGa7MFh" target="_none">Privacy Policy</a>
+          <a href="https://pastebin.com/6sGa7MFh" target="_none">Privacy Policy</a></p>
 
-          <h2>Technology</h2>
+          <h1 id="technology"><span data-translate="technology"></span></h1>
           
           <p id="gettingstarted">The bot was originally designed in JavaScript but was later rewritten in Python and now operates using the Discord.js library.<br><br>
           Polish Memes Bot is hosted on Daki.cc hosting and can handle a large number of servers despite being free.</p> 
@@ -130,7 +146,8 @@
           
           <p id="invite">To add Polish Memes Bot to your server, please <a href="https://dsc.gg/polishmemes" target="_none">click here.</a><br><br> The bot does not require any special permissions such as administrator or server management.</p>
 
-      
+   <div class="divider" style="width:24%; margin:30px 0;"></div>
+
           <h1>Commands</h1>
           <div>
             <ul>
@@ -247,6 +264,8 @@
             </ul>
           </div>
 
+   <div class="divider" style="width:24%; margin:30px 0;"></div>
+
           <h1 id="team">Team</h1>
 
           <p>Meet the team behind Polish Memes Bot:</p>
@@ -256,7 +275,7 @@
                 <img class="avatar" src="/images/hiverro.png" alt="Avatar 1">
                 <div class="member-details">
                   <a class="member-name" href="https://github.com/Hiverro" target="_blank">HIVERRO</a>
-                  <span class="member-role">- Bot Owner/Developer</span>
+                  <span class="member-role"> (Bot Owner/Developer)</span>
                 </div>
               </div>
           </ul>
@@ -269,10 +288,12 @@
 </div>
 
 
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
    <script src="/pages/home.js"></script>
    <script src="/pages/about.js"></script>
    <script src="/dashboard/login.js"></script>
    <script src="/dashboard/loginbutton.js"></script>
+   <script src="/pages/lang.js"></script>
    <script>
       // Funkcja do pobierania avatara z Discorda na podstawie tokenu
       function getAvatar(token) {

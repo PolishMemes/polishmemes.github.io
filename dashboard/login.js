@@ -24,7 +24,7 @@ function checkLoginStatus() {
       const avatarUrl = `https://cdn.discordapp.com/avatars/${response.data.id}/${response.data.avatar}.png`;
 
       // Odczytaj rolę użytkownika z pliku user_data.json
-      axios.get('/dashboard/user_data.json')
+      axios.get('/data/user_data.json')
         .then(userResponse => {
           const userData = userResponse.data;
           const userId = response.data.id;

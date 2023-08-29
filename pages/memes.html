@@ -29,41 +29,58 @@
          </div>
 
          <div class="menu-container">
-            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> Dashboard</a>
+            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> <span data-translate="menu.dashboard"></span></a>
             <a class="btn btn-secondary" onclick="loginWithDiscord()"><i class="fab fa-discord"></i> Log in with Discord</a>
             <div class="main-menu-button">
                <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
                <ul class="mainMenu noselect">
-                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
-                  <li><a class="active2" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
-                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
-                  <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
+                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> <span data-translate="menu.home"></span></a></li>
+                  <li><a class="active2" href="/pages/memes.html"><i class="fas fa-images"></i> <span data-translate="menu.memes"></span></a></li>
+                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> <span data-translate="menu.news"></span></a></li>
+                  <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> <span data-translate="menu.about"></span></a></li>
                </ul>
             </div>
             <div class="main-menu-button">
                <a class="btn btn-primary profile-button">
                   <div class="profile-container">
                      <img class="avatar-icon enlarged-avatar-icon" id="userAvatar" src="" alt="userAvatar"></img>
-                     <span class="avatar-text">Profile</span>
+                     <span class="avatar-text" data-translate="profileMenu.profile"></span>
                   </div>
                </a>
                <div id="settingsModal" class="modal">
                   <div class="modal-content">
+                     <h2 data-translate="modal.settings"></h2>
+                     <div class="settings-options">
+                        <div id="languageSettingsModal" class="option">
+                           <h3 data-translate="modal.language"></h3>
+                           <label for="languageSelect" data-translate="modal.selectLanguage"></label>
+                           <select id="languageSelect">
+                              <option value="en">English</option>
+                              <option value="pl">Polski</option>
+                           </select>
+                        </div>
+                        <div id="feedbackModal" class="option">
+                           <a href="https://forms.gle/P7CicyBnFrysmBFa7" target="_none"><h3 data-translate="modal.feedback"></h3></a>
+                        </div>
+                        <div id="contactModal" class="option">
+                           <a href="https://discord.gg/GYUtShqFtF" target="_none"><h3 data-translate="modal.contact"></h3></a>
+                        </div>
+                     </div>
                   </div>
                </div>
                <ul class="mainMenu noselect profile-menu">
-                  <li><a class="active" href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                  <li><a class="active" href="#"><i class="fas fa-cog"></i> <span data-translate="profileMenu.settings"></span></a></li>
+                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> <span data-translate="profileMenu.logout"></span></a></li>
                </ul>
-            </div>
+            </div>         
          </div>
       </nav>
 
       <div class="content noselect">
          <div class="heading text-center">
             <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
-            <h1 class="title" id="title">Polish Memes</h1>
-            <p class="subtitle" id="subtitle">Browse the best Polish memes!</p>
+            <h1 class="title" id="title" data-translate="pageTitle"></h1>
+            <p class="subtitle" id="subtitle" data-translate="pageSubtitle2"></p>
          </div>
 
          <div class="meme-container" id="memeContainer">
@@ -72,10 +89,12 @@
          <!-- End of content -->
       </div>
    <!-- End of page -->
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
    <script src="/pages/home.js"></script>
    <script src="/pages/memes.js"></script>
    <script src="/dashboard/login.js"></script>
    <script src="/dashboard/loginbutton.js"></script>
+   <script src="/pages/lang.js"></script>
    <script>
       // Funkcja do pobierania avatara z Discorda na podstawie tokenu
       function getAvatar(token) {
