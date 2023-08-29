@@ -3,7 +3,6 @@
 <head>
    <meta charset="utf-8">
    <title>Polish Memes - Dashboard</title>
-   <link rel="stylesheet" href="/pages/home.css">
    <link rel="stylesheet" href="/dashboard/index.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,15 +23,37 @@
        </div>
    </div>
    <div id="page">
-         <nav>
-            <div class="logo noselect">
-               <img class="noselect" src="/images/plflag.png"> Polish Memes
-            </div>
-            <ul class="mainMenu noselect">
-               <li><a class="btn btn-primary">Role: <span id="userRole"></span></a></li>
-               <li><a class="active" href="/dashboard/login.html" class="fas fa-home" onclick="logout()"> Logout</a></li>
+      <nav>
+         <div class="logo noselect">
+            <img class="noselect" src="/images/plflag.png"> Polish Memes
+         </div>
+         <ul class="mainMenu noselect">
+            <a class="main-menu-button">
+            <ul>
+               <a class="btn btn-primary">Role: <span id="userRole"></span></a>
             </ul>
-      </nav>     
+            </a>
+            <li>
+               <div class="main-menu-button">
+                  <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
+                  <ul class="mainMenu noselect">
+                     <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
+                     <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
+                     <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
+                     <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
+                  </ul>
+               </div>
+            </li>
+            <li>
+               <a class="main-menu-button">
+                  <ul>
+                     <li><a class="active" href="/dashboard/login.html" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                  </ul>
+               </a>
+            </li>
+         </ul>
+      </nav>
+      
       <div class="content noselect">
          <div class="heading text-center">
             <div id="login">
@@ -68,9 +89,6 @@
                         <p> - Your message can contain a maximum of 200 characters.</p>
                         <p> - We will get back to you as soon as possible!</p>
                      </ul>
-                     <ul class="meme-container" id="memeContainer">
-                        <!-- Meme cards will be dynamically added here -->
-                     </ul>
                   </div>
                </div>
             </div>
@@ -85,7 +103,9 @@
    <script src="/dashboard/loginbutton.js"></script>
    <script src="/dashboard/index.js"></script>
    <script src="/dashboard/login.js"></script>
+   <script>
+         const token = localStorage.removeItem('redirectFrom');
+   </script>
    <script src="/dashboard/upload_modal.js"></script> <!-- Nowy skrypt dla obsługi modalnego okna -->
-   <script src="/pages/memes.js"></script>
 </body>
 </html>

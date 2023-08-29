@@ -27,23 +27,42 @@
 
 
 <div id="page">
- <nav>
-  <div class="logo noselect">
-    <img class="noselect" src="/images/plflag.png"> Polish Memes
-  </div>
-  
-  <div class="openMenu noselect"><i class="fa fa-bars"></i></div>
-  <ul class="mainMenu noselect">
-    <li><a class="btn btn-secondary" href="/dashboard/login.html"><i class="fas fa-cogs"></i> Dashboard</a></li>
-    <li><a class="btn btn-primary" href="#"><i class="far fa-list-alt"></i> About</a></li>
-    <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
-    <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
-    <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
-  </ul>
-</nav>
+  <nav>
+    <div class="logo noselect">
+       <img class="noselect" src="/images/plflag.png"> Polish Memes
+    </div>
 
+         <div class="menu-container">
+            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> Dashboard</a>
+            <a class="btn btn-secondary" onclick="loginWithDiscord()"><i class="fab fa-discord"></i> Log in with Discord</a>
+            <div class="main-menu-button">
+               <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
+               <ul class="mainMenu noselect">
+                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> Home</a></li>
+                  <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> Memes</a></li>
+                  <li><a class="active" href="/pages/news.html"><i class="fas fa-newspaper"></i> News</a></li>
+                  <li><a class="active2" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
+               </ul>
+            </div>
+            <div class="main-menu-button">
+               <a class="btn btn-primary profile-button">
+                  <div class="profile-container">
+                     <img class="avatar-icon enlarged-avatar-icon" id="userAvatar" src="" alt="userAvatar"></img>
+                     <span class="avatar-text">Profile</span>
+                  </div>
+               </a>
+               <div id="settingsModal" class="modal">
+                  <div class="modal-content">
+                  </div>
+               </div>
+               <ul class="mainMenu noselect profile-menu">
+                  <li><a class="active" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+               </ul>
+            </div>
+         </div>
+ </nav>
 
- 
 <div class="container clear noselect">
   <div class="row wrapper">
 
@@ -249,8 +268,116 @@
 </div>
 
 
-<script src="/pages/home.js"></script>
-<script src="/pages/about.js"></script>
+   <script src="/pages/home.js"></script>
+   <script src="/pages/about.js"></script>
+   <script src="/dashboard/login.js"></script>
+   <script src="/dashboard/loginbutton.js"></script>
+   <script>
+      // Funkcja do pobierania avatara z Discorda na podstawie tokenu
+      function getAvatar(token) {
+         return fetch('https://discord.com/api/v10/users/@me', {
+            method: 'GET',
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+         })
+         .then(response => response.json())
+         .then(data => {
+            const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+            return avatarUrl;
+         })
+         .catch(error => {
+            console.error('Błąd podczas pobierania avatara:', error);
+            return null;
+         });
+      }
+      
+      // Funkcja do obsługi logiki przekierowania po zalogowaniu
+      function handleRedirect() {
+         // Odczytaj parametr URL zawierający informację o docelowej stronie
+         const urlParams = new URLSearchParams(window.location.search);
+         const redirectPage = urlParams.get('redirect');
+      
+         // Jeśli parametr redirectPage istnieje, zapisz go w local storage
+         if (redirectPage) {
+            localStorage.setItem('redirectFrom', redirectPage);
+         } else {
+            // Jeśli nie istnieje, zapisz aktualną stronę jako redirectFrom
+            localStorage.setItem('redirectFrom', window.location.href);
+         }
+      
+         // Pobierz token z local storage
+         const token = localStorage.getItem('accessToken');
+      
+      }
+      
+      // Sprawdź, czy użytkownik jest zalogowany i pobierz avatar oraz obsłuż przekierowanie
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+         getAvatar(token)
+            .then(avatarUrl => {
+               if (avatarUrl) {
+                  document.getElementById('userAvatar').src = avatarUrl;
+               }
+            })
+            .catch(error => {
+               console.error('Błąd podczas pobierania avatara:', error);
+            });
+      
+         handleRedirect();
+      } else {
+         // Jeśli użytkownik nie jest zalogowany, obsłuż przekierowanie
+         handleRedirect();
+      }
+   </script>
+   <script>
+      // Sprawdź, czy użytkownik jest zalogowany i ustaw widoczność przycisku "Profile"
+      const profileButton = document.querySelector('.profile-button');
+      
+      if (token) {
+         // Użytkownik jest zalogowany, pokaż przycisk "Profile"
+         profileButton.style.display = 'block';
+
+      // Sprawdź, czy użytkownik jest zalogowany
+      if (token) {
+         // Użytkownik jest zalogowany, ukryj przycisk "Login"
+         const loginButton = document.querySelector('.btn-secondary[onclick="loginWithDiscord()"]');
+         if (loginButton) {
+            loginButton.style.display = 'none';
+         }
+         // Użytkownik jest zalogowany, pokaż przycisk "Dashboard"
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         if (dashboardButton) {
+            dashboardButton.style.display = 'block';
+         }
+      }
+
+         // Pobierz avatar i ustaw go
+         getAvatar(token)
+            .then(avatarUrl => {
+               if (avatarUrl) {
+                  document.getElementById('userAvatar').src = avatarUrl;
+               }
+            })
+            .catch(error => {
+               console.error('Błąd podczas pobierania avatara:', error);
+            });
+      } else {
+         // Użytkownik nie jest zalogowany, ukryj przycisk "Profile"
+         profileButton.style.display = 'none';
+
+         // Użytkownik nie jest zalogowany, ukryj przycisk "Dashboard"
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         if (dashboardButton) {
+            dashboardButton.style.display = 'none';
+         }
+      }
+   </script>   
+   <script>
+      function logout() {
+         localStorage.removeItem('accessToken');
+      }
+   </script>
 </body>
 </html>
 

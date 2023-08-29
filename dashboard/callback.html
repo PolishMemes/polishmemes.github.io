@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 <head>
-  <title>Bot Dashboard Login</title>
-  <script src="/dashboard/login.js"></script>
+   <meta charset="utf-8">
+   <title>Polish Memes - Dashboard</title>
+   <link rel="stylesheet" href="/dashboard/index.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <link rel="icon" href="/images/plflag.png">
+   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700,800,900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700,800,900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,600,700,800,900&display=swap" rel="stylesheet">
+
+   <script src="/dashboard/login.js"></script>
+   <script src="/dashboard/callback.js"></script>
+   <script src="/dashboard/callback.css"></script>
+
 </head>
+<body onload="loaderFunction()">
+
+   <div id="loader">
+       <div class="loading">
+       <span></span>
+       </div>
+   </div>
+   <div id="page">
+      <nav>
+         <div class="logo noselect">
+            <img class="noselect" src="/images/plflag.png"> Polish Memes
+         </div>
 <body>
-  <h1>Bot Dashboard Login</h1>
+  <h1>Polish Memes Login</h1>
   <p>Redirecting...</p>
-  <script>
-    setTimeout(function() {
-      window.location.href = 'http://127.0.0.1:5500/dashboard/index.html';
-    }, 3000);
-  </script>
 </body>
 </html>

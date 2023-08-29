@@ -4,7 +4,6 @@
    <meta charset="utf-8">
    <title>Polish Memes - Discord Bot</title>
    <link rel="stylesheet" href="/pages/home.css">
-   <link rel="stylesheet" href="/dashboard/index.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
@@ -27,8 +26,8 @@
          </div>
 
          <div class="menu-container">
-            <a class="btn btn-secondary" href="/dashboard/login.html"><i class="fas fa-cogs"></i> Dashboard</a>
-            <div class="menu-container">
+            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> Dashboard</a>
+            <a class="btn btn-secondary" onclick="loginWithDiscord()"><i class="fab fa-discord"></i> Log in with Discord</a>
             <div class="main-menu-button">
                <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
                <ul class="mainMenu noselect">
@@ -38,21 +37,162 @@
                   <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> About</a></li>
                </ul>
             </div>
+            <div class="main-menu-button">
+               <a class="btn btn-primary profile-button">
+                  <div class="profile-container">
+                     <img class="avatar-icon enlarged-avatar-icon" id="userAvatar" src="" alt="userAvatar"></img>
+                     <span class="avatar-text">Profile</span>
+                  </div>
+               </a>
+               <div id="settingsModal" class="modal">
+                  <div class="modal-content">
+                     <h2>Settings</h2>
+                     <div class="settings-options">
+                        <div id="languageSettingsModal" class="option">
+                           <h3>Language settings</h3>
+                           <label for="languageSelect">Select language:</label>
+                           <select id="languageSelect">
+                              <option value="en">English</option>
+                              <option value="pl">Polski</option>
+                           </select>
+                        </div>
+                        <div id="feedbackModal" class="option">
+                           <a href="https://forms.gle/P7CicyBnFrysmBFa7" target="_none"><h3>Feedback</h3></a>
+                        </div>
+                        <div id="contactModal" class="option">
+                           <a href="https://discord.gg/GYUtShqFtF" target="_none"><h3>Contact</h3></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <ul class="mainMenu noselect profile-menu">
+                  <li><a class="active" href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                  <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+               </ul>
+            </div>         
          </div>
       </nav>
+   </div>
+   <div class="content noselect">
+      <div class="heading text-center">
+         <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
+         <h1 class="title" id="title">Polish Memes</h1>
+         <p class="subtitle" id="subtitle">Let yourself be absorbed by Polish Memes!</p>
 
-         <div class="content noselect">
-            <div class="heading text-center">
-               <img id="botLogo" class="noselect" src="/images/plflag.png" alt="botLogo">
-               <h1 class="title" id="title">Polish Memes</h1>
-               <p class="subtitle" id="subtitle">Let yourself be absorbed by Polish Memes!</p>
+         <br>
+         <a class="btn btn-primary" href="https://dsc.gg/polishmemes" target="_none" role="button"><i class="fab fa-discord"></i> Add to server</a>
+         <a class="btn btn-primary" href="https://discord.gg/GYUtShqFtF" role="button"><i class="fab fa-discord"></i> Discord Server</a>
+         <a class="btn btn-secondary" href="https://top.gg/bot/829662885058707497/vote" target="_none" role="button"><i class="fa fa-check"></i> Vote </a>
+      </div>
+   </div>
+   <script src="/pages/home.js"></script>
+   <script src="/dashboard/login.js"></script>
+   <script src="/dashboard/loginbutton.js"></script>
+   <script>
+      // Funkcja do pobierania avatara z Discorda na podstawie tokenu
+      function getAvatar(token) {
+         return fetch('https://discord.com/api/v10/users/@me', {
+            method: 'GET',
+            headers: {
+               Authorization: `Bearer ${token}`,
+            },
+         })
+         .then(response => response.json())
+         .then(data => {
+            const avatarUrl = `https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png`;
+            return avatarUrl;
+         })
+         .catch(error => {
+            console.error('Błąd podczas pobierania avatara:', error);
+            return null;
+         });
+      }
+      
+      // Funkcja do obsługi logiki przekierowania po zalogowaniu
+      function handleRedirect() {
+         // Odczytaj parametr URL zawierający informację o docelowej stronie
+         const urlParams = new URLSearchParams(window.location.search);
+         const redirectPage = urlParams.get('redirect');
+      
+         // Jeśli parametr redirectPage istnieje, zapisz go w local storage
+         if (redirectPage) {
+            localStorage.setItem('redirectFrom', redirectPage);
+         } else {
+            // Jeśli nie istnieje, zapisz aktualną stronę jako redirectFrom
+            localStorage.setItem('redirectFrom', window.location.href);
+         }
+      
+         // Pobierz token z local storage
+         const token = localStorage.getItem('accessToken');
+      
+      }
+      
+      // Sprawdź, czy użytkownik jest zalogowany i pobierz avatar oraz obsłuż przekierowanie
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+         getAvatar(token)
+            .then(avatarUrl => {
+               if (avatarUrl) {
+                  document.getElementById('userAvatar').src = avatarUrl;
+               }
+            })
+            .catch(error => {
+               console.error('Błąd podczas pobierania avatara:', error);
+            });
+      
+         handleRedirect();
+      } else {
+         // Jeśli użytkownik nie jest zalogowany, obsłuż przekierowanie
+         handleRedirect();
+      }
+   </script>
+   <script>
+      // Sprawdź, czy użytkownik jest zalogowany i ustaw widoczność przycisku "Profile"
+      const profileButton = document.querySelector('.profile-button');
+      
+      if (token) {
+         // Użytkownik jest zalogowany, pokaż przycisk "Profile"
+         profileButton.style.display = 'block';
 
-               <br>
-               <a class="btn btn-primary" href="https://dsc.gg/polishmemes" target="_none" role="button"><i class="fab fa-discord"></i> Add to server</a>
-               <a class="btn btn-primary" href="https://discord.gg/GYUtShqFtF" role="button"><i class="fab fa-discord"></i> Discord Server</a>
-               <a class="btn btn-secondary" href="https://top.gg/bot/829662885058707497/vote" target="_none" role="button"><i class="fa fa-check"></i> Vote </a>
-            </div>
-         </div>
-      <script src="/pages/home.js"></script>
-   </body>
+      // Sprawdź, czy użytkownik jest zalogowany
+      if (token) {
+         // Użytkownik jest zalogowany, ukryj przycisk "Login"
+         const loginButton = document.querySelector('.btn-secondary[onclick="loginWithDiscord()"]');
+         if (loginButton) {
+            loginButton.style.display = 'none';
+         }
+         // Użytkownik jest zalogowany, pokaż przycisk "Dashboard"
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         if (dashboardButton) {
+            dashboardButton.style.display = 'block';
+         }
+      }
+
+         // Pobierz avatar i ustaw go
+         getAvatar(token)
+            .then(avatarUrl => {
+               if (avatarUrl) {
+                  document.getElementById('userAvatar').src = avatarUrl;
+               }
+            })
+            .catch(error => {
+               console.error('Błąd podczas pobierania avatara:', error);
+            });
+      } else {
+         // Użytkownik nie jest zalogowany, ukryj przycisk "Profile"
+         profileButton.style.display = 'none';
+
+         // Użytkownik nie jest zalogowany, ukryj przycisk "Dashboard"
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         if (dashboardButton) {
+            dashboardButton.style.display = 'none';
+         }
+      }
+   </script>   
+   <script>
+      function logout() {
+         localStorage.removeItem('accessToken');
+      }
+   </script>
+</body>
 </html>

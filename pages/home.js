@@ -89,4 +89,27 @@ function showPage() {
   }
 }
 
+const settingsButton = document.querySelector('.profile-menu li:first-child a');
+const settingsModal = document.getElementById('settingsModal');
+
+// Funkcja do pokazywania modala
+function openSettingsModal() {
+   settingsModal.style.display = 'block';
+}
+
+// Funkcja do ukrywania modala
+function closeSettingsModal() {
+   settingsModal.style.display = 'none';
+}
+
+// Przypisanie funkcji do przycisku "Settings"
+settingsButton.addEventListener('click', openSettingsModal);
+
+// Przypisanie funkcji do zamykania modala po kliknięciu poza nim
+settingsModal.addEventListener('click', (event) => {
+   if (event.target === settingsModal) {
+      closeSettingsModal();
+   }
+});
+
 window.onload = loaderFunction;
