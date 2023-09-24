@@ -84,23 +84,20 @@
 <div class="container clear noselect">
   <div class="row wrapper">
 
-    <span class="collapse" onclick="closeSidePanel()"><i class="fas fa-caret-left"></i></span>
-    <span class="expand" onclick="openSidePanel()"><i class="fas fa-caret-right"></i></span>
-
       <div class="sidepanel">
         <div class="divider left"></div>
 
           <a class="title" href="#introduction"><span data-translate="introduction"></span></a>
           
-          <a class="section" href="#aboutthisbot" data-translate="aboutthisbot"></a>
+          <a class="section" href="#aboutthisbot"><span data-translate="aboutthisbot"></a>
           <a class="section" href="#technology"><span data-translate="technology"></span></a>
 
           <div class="divider left"></div>
 
-          <a class="title" href="#gettingstarted" data-translate="gettingstarted"></a>
+          <a class="title" href="#gettingstarted"><span data-translate="gettingstarted"></a>
 
           <a class="section" href="#inbothelp"><span data-translate="in-bot help"></span></a>
-          <a class="section" href="#addingthebot" data-translate="addingthebot"></a>
+          <a class="section" href="#addingthebot"><span data-translate="addingthebot"></a>
 
           <div class="divider left"></div>
 
@@ -108,7 +105,7 @@
 
           <div class="divider left"></div>
 
-          <a class="title" href="#team" data-translate="team"></a>
+          <a class="title" href="#team"><span data-translate="team"></span></a>
 
           <div class="divider left"></div>
       
@@ -119,118 +116,94 @@
       <div class="right-col">
           <h1 id="introduction"><span data-translate="introduction1"></span></h1>
           
-          <p id="aboutthisbot">Welcome to Polish Memes, the ultimate bot that will immerse you in the world of Polish memes.</p> 
+          <p id="aboutthisbot1"><span data-translate="aboutthisbot1"></span></p> 
       
-          <h1 id="abouthisbot" data-translate="aboutthisbot"></h1>
+          <h1 id="abouthisbot"><span data-translate="aboutthisbot"></span></h1>
           
-          <p id="technology">Polish Memes Bot guarantees 100% security. It does not store any detailed data about clients or their servers. It operates 24/7 and is fully safe for work (SFW).<br><br>
-          <a href="https://pastebin.com/rc014JPS" target="_none">Terms of Service</a> <span> / </span>
-          <a href="https://pastebin.com/6sGa7MFh" target="_none">Privacy Policy</a></p>
+          <p id="technology1"><span data-translate="technology1"></span><br><br>
+          <a id="tos" href="https://pastebin.com/rc014JPS" target="_none"><span data-translate="tos"></span></a> <span> / </span>
+          <a id="pp" href="https://pastebin.com/6sGa7MFh" target="_none"><span data-translate="pp"></span></a></p>
 
           <h1 id="technology"><span data-translate="technology"></span></h1>
           
-          <p id="gettingstarted">The bot was originally designed in JavaScript but was later rewritten in Python and now operates using the Discord.js library.<br><br>
-          Polish Memes Bot is hosted on Daki.cc hosting and can handle a large number of servers despite being free.</p> 
+          <p id="gettingstarted1"><span data-translate="gettingstarted1"></span>
+          <p id="gettingstarted2"><span data-translate="gettingstarted2"></span></p> 
            
   <div class="divider" style="width:24%; margin:30px 0;"></div>
 
-          <h1>Getting Started</h1>
+          <h1 id="gettingstarted"><span data-translate="gettingstarted"></span></h1>
           
-          <p id="inbothelp">Using Polish Memes Bot is easy! Simply invite the bot to your server of choice and use the command "/meme" to generate a cool meme for yourself. Enjoy!</p> 
+          <p id="in-bot help1"><span data-translate="in-bot help1"></span></p> 
 
-          <h1>In-Bot Help</h1>
+          <h1 id="in-bot help"><span data-translate="in-bot help"></span></h1>
 
-          <p>If you encounter any problems with the bot or have any questions, please join our Discord server at <a href="https://discord.gg/GYUtShqFtF" target="_none">https://discord.gg/GYUtShqFtF</a>. We're here to assist you!</p>
+          <p id="in-bot help2"><span data-translate="in-bot help2"></span> <a href="https://discord.gg/GYUtShqFtF" target="_none">https://discord.gg/GYUtShqFtF</a>. <span data-translate="in-bot help3"></span></p>
 
-          <h2>Adding the Bot</h2>
+          <h1 id="addingthebot"><span data-translate="addingthebot"></span></h1>
           
-          <p id="invite">To add Polish Memes Bot to your server, please <a href="https://dsc.gg/polishmemes" target="_none">click here.</a><br><br> The bot does not require any special permissions such as administrator or server management.</p>
+          <p id="addingthebot1"><span data-translate="addingthebot1"></span> <a href="https://dsc.gg/polishmemes" target="_none"><span data-translate="clickhere"></span></a>.<br><br> <span data-translate="addingthebot3"></span></p>
 
    <div class="divider" style="width:24%; margin:30px 0;"></div>
 
-          <h1>Commands</h1>
+          <h1 id="commands"><span data-translate="commands"></span></h1>
           <div>
             <ul>
-              <li class="collapsible">Meme</li>
-              <div class="cmdCollapse">
-                Description: Generate a cool meme for yourself.
-                <br>
-                Usage: <span class="codeBlock">/meme</span>
-                <br>
-                Example: <span class="codeBlock">/meme</span>
-                <br>
-                Note: This command will generate a funny meme for you sourced from Reddit.
-              </div>
+               <li class="collapsible">Meme</li>
+               <div class="cmdCollapse">
+                 <div data-translate="meme.description"></div>
+                 <div data-translate="meme.usage"></div>
+                 <div data-translate="meme.example"></div>
+                 <div data-translate="meme.note"></div>
+               </div>     
               <li class="collapsible">Ping</li>
               <div class="cmdCollapse">
-                Description: Check the bot's response time.
-                <br>
-                Usage: <span class="codeBlock">/ping</span>
-                <br>
-                Example: <span class="codeBlock">/ping</span>
-                <br>
-                Note: This command will measure the bot's latency and response time.
-              </div>
+               <div data-translate="ping.description"></div>
+               <div data-translate="ping.usage"></div>
+               <div data-translate="ping.example"></div>
+               <div data-translate="ping.note"></div>
+             </div>    
               <li class="collapsible">Info</li>
               <div class="cmdCollapse">
-                Description: Display information about the bot.
-                <br>
-                Usage: <span class="codeBlock">/info</span>
-                <br>
-                Example: <span class="codeBlock">/info</span>
-                <br>
-                Note: This command will provide detailed and important information about the bot.
-              </div>
+               <div data-translate="info.description"></div>
+               <div data-translate="info.usage"></div>
+               <div data-translate="info.example"></div>
+               <div data-translate="info.note"></div>
+             </div> 
               <li class="collapsible">Help</li>
               <div class="cmdCollapse">
-                Description: Get help and information about available commands.
-                <br>
-                Usage: <span class="codeBlock">/help</span>
-                <br>
-                Example: <span class="codeBlock">/help</span>
-                <br>
-                Note: This command will display a list of available commands and their usage.
-              </div>
+               <div data-translate="help.description"></div>
+               <div data-translate="help.usage"></div>
+               <div data-translate="help.example"></div>
+               <div data-translate="help.note"></div>
+             </div> 
               <li class="collapsible">Profile</li>
               <div class="cmdCollapse">
-                Description: View user profile.
-                <br>
-                Usage: <span class="codeBlock">/profile [@user]</span>
-                <br>
-                Example: <span class="codeBlock">/profile @john</span>
-                <br>
-                Note: This command will display the profile of the specified user or your own profile if no user is mentioned.
-              </div>
+               <div data-translate="profile.description"></div>
+               <div data-translate="profile.usage"></div>
+               <div data-translate="profile.example"></div>
+               <div data-translate="profile.note"></div>
+             </div> 
               <li class="collapsible">Reputation</li>
               <div class="cmdCollapse">
-                Description: Give reputation points to a user.
-                <br>
-                Usage: <span class="codeBlock">/reputation [@user]</span>
-                <br>
-                Example: <span class="codeBlock">/reputation @jane</span>
-                <br>
-                Note: This command will give reputation points to the specified user.
-              </div>
+               <div data-translate="reputation.description"></div>
+               <div data-translate="reputation.usage"></div>
+               <div data-translate="reputation.example"></div>
+               <div data-translate="reputation.note"></div>
+             </div> 
               <li class="collapsible">Top</li>
               <div class="cmdCollapse">
-                Description: View leaderboard for levels, balances, or reputation.
-                <br>
-                Usage: <span class="codeBlock">/top [level/balance/reputation]</span>
-                <br>
-                Example: <span class="codeBlock">/top level</span>
-                <br>
-                Note: This command will display the top users based on the specified category (level, balance, or reputation).
-              </div>
-              <li class="collapsible">Daily</li>
+               <div data-translate="top.description"></div>
+               <div data-translate="top.usage"></div>
+               <div data-translate="top.example"></div>
+               <div data-translate="top.note"></div>
+             </div> 
+              <li class="collapsible">Reward</li>
               <div class="cmdCollapse">
-                Description: Claim daily reward.
-                <br>
-                Usage: <span class="codeBlock">/daily</span>
-                <br>
-                Example: <span class="codeBlock">/daily</span>
-                <br>
-                Note: This command will allow you to claim a daily reward.
-              </div>
+               <div data-translate="reward.description"></div>
+               <div data-translate="reward.usage"></div>
+               <div data-translate="reward.example"></div>
+               <div data-translate="reward.note"></div>
+             </div> 
               <li class="collapsible">Transfer</li>
               <div class="cmdCollapse">
                 Description: Transfer currency to another user.
@@ -266,16 +239,16 @@
 
    <div class="divider" style="width:24%; margin:30px 0;"></div>
 
-          <h1 id="team">Team</h1>
+          <h1 id="team"><span data-translate="team"></span></h1>
 
-          <p>Meet the team behind Polish Memes Bot:</p>
+          <p><span data-translate="team1"></span></p>
 
           <ul class="team-list">
               <div class="team-member">
                 <img class="avatar" src="/images/hiverro.png" alt="Avatar 1">
                 <div class="member-details">
                   <a class="member-name" href="https://github.com/Hiverro" target="_blank">HIVERRO</a>
-                  <span class="member-role"> (Bot Owner/Developer)</span>
+                  <span class="member-role"> <span data-translate="hiverro"></span></span>
                 </div>
               </div>
           </ul>
