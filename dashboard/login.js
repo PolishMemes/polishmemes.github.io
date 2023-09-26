@@ -1,6 +1,6 @@
 // Konfiguracja
 const clientID = '848629390577500211';
-const redirectURI = 'http://127.0.0.1:5500/dashboard/callback.html';
+const redirectURI = 'http://127.0.0.1:5500/dashboard/callback';
 const discordAPI = 'https://discord.com/api/v10';
 
 // Sprawdź, czy użytkownik jest już zalogowany

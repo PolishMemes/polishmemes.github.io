@@ -33,15 +33,15 @@
          </div>
 
          <div class="menu-container">
-            <a class="btn btn-secondary" href="/dashboard/index.html" target="_none"><i class="fas fa-cogs"></i> <span data-translate="menu.dashboard"></span></a>
+            <a class="btn btn-secondary" href="/dashboard/index" target="_none"><i class="fas fa-cogs"></i> <span data-translate="menu.dashboard"></span></a>
             <a class="btn btn-secondary" onclick="loginWithDiscord()"><i class="fab fa-discord"></i> Log in with Discord</a>
             <div class="main-menu-button">
                <a class="btn btn-primary"><i class="fas fa-bars"></i> Menu</a>
                <ul class="mainMenu noselect">
-                  <li><a class="active" href="/pages/home.html"><i class="fas fa-home"></i> <span data-translate="menu.home"></span></a></li>
-                  <li><a class="active" href="/pages/memes.html"><i class="fas fa-images"></i> <span data-translate="menu.memes"></span></a></li>
-                  <li><a class="active2" href="/pages/news.html"><i class="fas fa-newspaper"></i> <span data-translate="menu.news"></span></a></li>
-                  <li><a class="active" href="/pages/about.html"><i class="far fa-list-alt"></i> <span data-translate="menu.about"></span></a></li>
+                  <li><a class="active" href="/pages/home"><i class="fas fa-home"></i> <span data-translate="menu.home"></span></a></li>
+                  <li><a class="active" href="/pages/memes"><i class="fas fa-images"></i> <span data-translate="menu.memes"></span></a></li>
+                  <li><a class="active2" href="/pages/news"><i class="fas fa-newspaper"></i> <span data-translate="menu.news"></span></a></li>
+                  <li><a class="active" href="/pages/about"><i class="far fa-list-alt"></i> <span data-translate="menu.about"></span></a></li>
                </ul>
             </div>
             <div class="main-menu-button">
@@ -73,7 +73,7 @@
                   </div>
                </div>
                <ul class="mainMenu noselect profile-menu">
-                  <li><a class="active" href="#"><i class="fas fa-cog"></i> <span data-translate="profileMenu.settings"></span></a></li>
+                  <li><a class="active"><i class="fas fa-cog"></i> <span data-translate="profileMenu.settings"></span></a></li>
                   <li><a class="active" onclick="logout(); location.reload();"><i class="fas fa-sign-out-alt"></i> <span data-translate="profileMenu.logout"></span></a></li>
                </ul>
             </div>         
@@ -180,7 +180,7 @@
             loginButton.style.display = 'none';
          }
          // Użytkownik jest zalogowany, pokaż przycisk "Dashboard"
-         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index"]');
          if (dashboardButton) {
             dashboardButton.style.display = 'block';
          }
@@ -201,7 +201,7 @@
          profileButton.style.display = 'none';
 
          // Użytkownik nie jest zalogowany, ukryj przycisk "Dashboard"
-         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index.html"]');
+         const dashboardButton = document.querySelector('.btn-secondary[href="/dashboard/index"]');
          if (dashboardButton) {
             dashboardButton.style.display = 'none';
          }
