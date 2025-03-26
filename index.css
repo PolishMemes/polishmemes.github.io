@@ -341,18 +341,23 @@ nav .mainMenu .closeMenu,
 
 }
 
-.content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: -1;
-    width: 100%;
-    padding: 0 30px;
-    color: #fff;
-    animation: pageShow .3s ease-in-out;
+/* Zmodyfikowany CSS dla głównej zawartości */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px 0;
 }
+
+.content {
+    text-align: center;
+    color: #fff;
+    margin: auto;
+    padding: 200px;
+    flex: 1;
+}
+
+/* Reszta istniejącego CSS pozostaje bez zmian */
 
 .title {
     font-size: 40px;
@@ -447,5 +452,104 @@ a {
         font-size: 14px;
         margin: 2px;
         padding: 8px 13px;
+    }
+}
+
+.news-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.news-container h2 {
+    color: #fff;
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+.news-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.news-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: #ee7b5a;
+    transform: translateX(-50%);
+}
+
+.news-item {
+    background: rgba(29, 30, 33, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    position: relative;
+    width: 45%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-item.latest {
+    width: 60%;
+    margin: 40px auto;
+    background: rgba(238, 123, 90, 0.1);
+    border: 1px solid rgba(238, 123, 90, 0.3);
+}
+
+.news-item:nth-child(odd) {
+    margin-left: 55%;
+}
+
+.news-item:nth-child(even) {
+    margin-left: 0;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.news-version {
+    color: #ee7b5a;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.news-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+}
+
+.news-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .news-timeline::before {
+        left: 20px;
+    }
+    
+    .news-item {
+        width: 100%;
+        margin-left: 40px !important;
+    }
+    
+    .news-item.latest {
+        width: 100%;
+        margin: 20px 0 20px 40px !important;
+    }
+    
+    .news-container h2 {
+        font-size: 2em;
     }
 }
