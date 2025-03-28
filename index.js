@@ -111,3 +111,44 @@ function showPage() {
   document.getElementById("loader").style.display = "none";
   document.getElementById("page").style.display = "block";
 }
+
+(function() {
+    const container = document.getElementById('page');
+    const elements = document.querySelectorAll('.auto-position');
+
+    function scalePage() {
+        let scale = window.innerWidth / baseWidth;
+        if (scale > 1) scale = 1; // Nie powiększaj na dużych ekranach
+
+        // Ustawienie skalowania
+        container.style.transform = `scale(${scale})`;
+        container.style.transformOrigin = "top left";
+        
+        // Wyśrodkowanie treści w poziomie
+        let offsetX = (window.innerWidth - baseWidth * scale) / 2;
+        container.style.position = "absolute";
+        container.style.left = `${offsetX}px`;
+        container.style.top = "0";
+        
+        // Dostosowanie wysokości, aby uniknąć obcinania na mobilnych
+        container.style.height = `${window.innerHeight / scale}px`;
+
+        positionElements(); // Aktualizacja pozycji elementów
+    }
+
+    function positionElements() {
+        elements.forEach(element => {
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            const elementHeight = element.offsetHeight;
+            const elementWidth = element.offsetWidth;
+
+            element.style.position = 'absolute';
+            element.style.top = `${windowHeight - elementHeight}px`;
+            element.style.left = `${windowWidth - elementWidth}px`;
+        });
+    }
+
+    window.addEventListener('resize', scalePage);
+    document.addEventListener('DOMContentLoaded', scalePage);
+})();

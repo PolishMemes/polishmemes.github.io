@@ -149,7 +149,7 @@ body {
 
 nav {
     display: flex;
-    height: 55px;
+    min-height: 75px;
     width: 100%;
     background: #0f0f10;
     align-items: center;
@@ -226,20 +226,20 @@ nav .menu-btn i {
     display: none;
 }
 
-nav .openMenu {
-    font-size: 25px;
-    display: none;
-    cursor: pointer;
-    color: #fff;
-}
+    nav .openMenu {
+        font-size: 25px;
+        display: none;
+        cursor: pointer;
+        color: #eee;
+    }
 
-nav .mainMenu .closeMenu,
-.icons i {
-    font-size: 2rem;
-    display: none;
-    cursor: pointer;
-    color: #fff;
-}
+    nav .mainMenu .closeMenu,
+    .icons i {
+        font-size: 2rem;
+        display: none;
+        cursor: pointer;
+        color: #eee;
+    }
 
 .invite {
     background-color: #ee7b5a;
@@ -251,7 +251,7 @@ nav .mainMenu .closeMenu,
     }
 
     nav .logo {
-        font-size: 30px;
+        font-size: 25px;
         font-weight: bold !important;
         color: #fff;
         margin-left: 5px;
@@ -353,7 +353,7 @@ nav .mainMenu .closeMenu,
     text-align: center;
     color: #fff;
     margin: auto;
-    padding: 200px;
+    padding: 50px;
     flex: 1;
 }
 
